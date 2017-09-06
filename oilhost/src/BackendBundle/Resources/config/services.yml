@@ -1,0 +1,9 @@
+parameters:
+    url:
+
+services:
+    parse.hid.xml:
+         class: BackendBundle\Services\ConfigXMLReader
+         arguments:
+                - '%url%'
+                - '@service_container'

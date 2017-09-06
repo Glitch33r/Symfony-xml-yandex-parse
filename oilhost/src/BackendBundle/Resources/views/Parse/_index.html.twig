@@ -1,0 +1,19 @@
+{% extends 'BackendBundle:sonata_admin:standard_layout.html.twig' %}
+
+{% block breadcrumb %}
+    <li><a href="{{ url('sonata_admin_dashboard') }}">{% trans %}Dashboard{% endtrans %}</a></li>
+    <li class="active">Load XML</li>
+{% endblock %}
+
+{% block content %}
+    <p class="lead">
+        Load information like products, currency, categories for
+        <b>Hydraulics section</b> from Xml file
+    </p>
+    <a href="{{ path('admin_parse_action') }}" id="parse-btn" class="btn btn-lg btn-default highlight_black stylish ">Load</a>
+
+    <div class="parse-loading-overlay">
+        <img src="{{ asset('bundles/backend/img/load.gif') }}">
+    </div>
+
+{% endblock %}
