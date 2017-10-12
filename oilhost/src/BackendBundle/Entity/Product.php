@@ -41,9 +41,10 @@ class Product
      */
     private $price;
 
+ 
     /**
-     * @ORM\ManyToOne(targetEntity="Currency", inversedBy="products")
-     * @ORM\JoinColumn(name="currency_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Currency", inversedBy="products", cascade={"remove"})
+     * @ORM\JoinColumn(name="currency_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     private $currency;
 
@@ -77,7 +78,7 @@ class Product
 
     /**
      * @var \Doctrine\Common\Collections\Collection
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products", cascade={"remove"})
      */
     private $category;
 
