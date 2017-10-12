@@ -51,7 +51,7 @@ class Category
         }
     }
 
-    /**
+       /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
@@ -75,22 +75,22 @@ class Category
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"remove"})
      */
     private $products;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent",cascade={"persist","remove"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent", cascade={"remove"})
      */
     private $categories;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="categories")
-     * @ORM\JoinColumn(name="parent", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="categories", cascade={"remove"})
+     * @ORM\JoinColumn(name="parent", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      **/
     private $parent;
 
